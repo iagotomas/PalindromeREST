@@ -1,0 +1,56 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+
+group = "com.itomas.dropwizard"
+version = 0.1
+
+// Use Java 7 by default
+//sourceCompatibility = '1.7'
+//targetCompatibility = '1.7'
+
+// UTF-8 should be standard by now. So use it!
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+// The main class of the application
+mainClassName = 'com.itomas.dropwizard.PalindromeRESTApplication'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+
+// Set our project variables
+project.ext {
+    dropwizardVersion = '0.8.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'io.dropwizard:dropwizard-core:' + dropwizardVersion
+	// Jetty
+	compile 'io.dropwizard:dropwizard-jetty:' + dropwizardVersion
+	// Jetty
+	compile 'io.dropwizard:dropwizard-jersey:' + dropwizardVersion
+	// Jetty
+	compile 'io.dropwizard:dropwizard-jackson:' + dropwizardVersion
+	// Jetty
+	compile 'io.dropwizard:dropwizard-configuration:' + dropwizardVersion
+	// Logging
+	compile 'io.dropwizard:dropwizard-logging:' + dropwizardVersion
+	// Testing
+	testCompile 'io.dropwizard:dropwizard-testing:' + dropwizardVersion
+	
+    testCompile 'junit:junit:4.9'
+    
+}
+// Configure the run task to start the Dropwizard service
+run {
+    args 'server', './src/dist/config/palindrome.yml'
+
+}
