@@ -30,16 +30,19 @@ public class PalindromeRESTServiceTest {
 		Response response = service.doPost("word");
 		assertNotNull(response);
 	}
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void testIsAPalindrome_exception_null() {
 		service.isAPalindrome(null);
 		fail("IllegalArgumentException not thrown for an invalid word");
 	}
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void testIsAPalindrome_exception_contains_numbers() {
 		service.isAPalindrome("word1");
 		fail("IllegalArgumentException not thrown for an invalid word");
 	}
+	
 	@Test
 	public void testIsAPalindrome_false() {
 		boolean result = service.isAPalindrome("word");
@@ -48,6 +51,7 @@ public class PalindromeRESTServiceTest {
 		assertFalse(result);
 		
 	}
+	
 	@Test
 	public void testIsAPalindrome_true() {
 		boolean result = service.isAPalindrome("woow");
