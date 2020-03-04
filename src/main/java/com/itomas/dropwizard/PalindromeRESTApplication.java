@@ -6,8 +6,8 @@ import io.dropwizard.setup.Environment;
 public class PalindromeRESTApplication extends Application<PalindromeRESTConfiguration> {
 
 	public static void main(String[] args) throws Exception {
-        new PalindromeRESTApplication().run(args);
-    }
+        	new PalindromeRESTApplication().run(args);
+    	}
 	@Override
 	public String getName() {
 		return "palindrome-rest";
@@ -16,8 +16,7 @@ public class PalindromeRESTApplication extends Application<PalindromeRESTConfigu
 	public void run(PalindromeRESTConfiguration configuration,
 			Environment environment) throws Exception {
 		PalindromeRESTService service = new PalindromeRESTService();
-		environment.jersey().register(service);
-		
+		environment.jersey().register(service);		
 	}
 
 }
